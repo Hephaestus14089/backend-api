@@ -2,7 +2,7 @@
   "name": "backend-api",
   "description": "The back-end api of an e-commerce web application (The college final sem project).",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Bhargav Das Gupta <dasguptabhargav@gmail.com>",
   "license": "GPL-2.0",
   "devDependencies": {
