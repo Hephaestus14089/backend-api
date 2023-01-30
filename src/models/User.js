@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
 );
 
 // generate auth token (jwt)
-userSchema.methods.generateAuthToken = async () => {
+userSchema.methods.generateAuthToken = async function() {
   const user = this;
 
   const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
@@ -57,7 +57,7 @@ userSchema.methods.generateAuthToken = async () => {
 };
 
 // hash plain-text password
-userSchema.pre('save', async (cb_func) => {
+userSchema.pre('save', async function(cb_func) {
   const user = this;
 
   if (user.isModified('password'))

@@ -14,6 +14,7 @@ router.post('/users', async (req, res) => {
     res.status(201).send({ user, token });
   }
   catch (err) {
+    console.log(err);
     res.status(400).send(err);
   }
 });
@@ -27,6 +28,7 @@ router.post('/users/login', async (req, res) => {
     res.send({ user, token });
   }
   catch (err) {
+    console.log(err);
     res.status(400).send(err);
   }
 });
@@ -42,6 +44,7 @@ router.post('/users/logout', Auth, async (req, res) => {
     res.send();
   }
   catch (err) {
+    console.log(err);
     res.status(500).send();
   }
 });
@@ -55,6 +58,7 @@ router.post('/users/logout-all', Auth, async (req, res) => {
     res.send();
   }
   catch (err) {
+    console.log(err);
     res.status(500).send();
   }
 });
