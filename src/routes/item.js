@@ -5,7 +5,7 @@ const Auth = require('../middleware/auth');
 const router = new express.Router();
 
 // create an item
-router.post('/items', Auth, async () => {
+router.post('/items', Auth, async (req, res) => {
   try {
     const newItem = new Item({
       ...req.body,

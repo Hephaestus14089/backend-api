@@ -40,11 +40,11 @@ router.post('/cart', Auth, async (req, res) => {
 
     // check if cart already exists for user
     if (cart) {    // cart exists
-      const itemIndex = cart.items.findIndex(item => item.itemId === itemId);
+      const itemIndex = cart.items.findIndex(item => item.itemId.toString() === itemId);
 
       // check if product already exists in cart
       if (itemIndex > -1)
-        cart.items[itemIndex].quantity += quantity;
+        cart.items[itemIndex].quantity += Number(quantity);
       else
         cart.items.push({ itemId, name, quantity, price });
 
@@ -58,7 +58,7 @@ router.post('/cart', Auth, async (req, res) => {
     else {    // cart does not exist
       const newCart = await Cart.create({
         owner,
-        items: [{ itemid, name, quantity, price }],
+        items: [{ itemId, name, quantity, price }],
         bill: quantity * price
       });
 
@@ -78,7 +78,7 @@ router.delete('/cart', Auth, async (req, res) => {
 
   try {
     let cart = await Cart.findOne({ owner });
-    const itemIndex = cart.items.findindex(item => item.itemId === itemId);
+    const itemIndex = cart.items.findIndex(item => item.itemId.toString() === itemId);
 
     if (itemIndex > -1) {
       let item = cart.items[itemIndex];
